@@ -17,6 +17,7 @@ var differential = [];
 var calculation;
 var roundedCalculation;
 var calorieCalculation;
+var roundedCalories;
 var calorieName;
 	var height = $('#height').val();
 
@@ -62,8 +63,11 @@ var calorieName;
 	$('#bmrneg').html(bmrNeg);
 	$('#bmrpos').html(bmrPos);
 
-	$("#water_intake").html("150.3 oz");
-	$("#fiber_intake").html("50.1 g");
+  var water = weight * .9;
+  var fiber = weight * .3;
+
+	$("#water_intake").html(water +"oz");
+	$("#fiber_intake").html(fiber + "g");
 
 var differential = 0;
   for (var i = 0; i < week.length; i++){
@@ -162,7 +166,8 @@ function calcCalories()
 {
   console.log(calorieVars);
   calories = (calorieVars[0] * 4) + (calorieVars[1] * 4) + (calorieVars[2] * 9);
-	return calories;
+  roundedCalories = Math.round(calories * 100)/100;
+	return roundedCalories;
 }
 
 });

@@ -1,0 +1,193 @@
+
+#title {
+	text-align: left;
+	background-color:#697892;
+	margin: 20px 0px 5px 0px;
+	padding: 25px;
+	color: white;
+}
+
+
+.h1, h1 {
+    font-size: 36px;
+
+}	
+
+#misc{
+	margin: 20px 5px 0px 0px;
+}
+
+/* for when tabs are activated
+#allmeasurements{
+			width: 800px;
+			margin: 0 auto;
+		}
+		ul.tabs{
+			margin: 0px;
+			padding: 0px;
+			list-style: none;
+		}
+		ul.tabs a {
+		text-decoration: none;
+		color: black;
+		}
+		ul.tabs li{
+			background: none;
+			color: #222;
+			display: inline-block;
+			padding: 10px 15px;
+			cursor: pointer;
+		}
+
+		ul.tabs li.active{
+			background: #ededed;
+			color: #222;
+		}
+
+		.tab-content{
+			display: none;
+			background: #ededed;
+			padding: 20px;
+			width: 346px;
+		}
+
+		.tab-content.active{
+			display: inherit;
+		}
+*/
+.input-labels{
+	text-align: right;
+}
+
+.input{
+	margin: auto;
+}
+
+.col-md-4 {
+	margin-right: 3%;
+	margin-left: 3%;
+}
+
+.container-fluid{
+	margin-top:3%;
+}
+
+#rightside {
+	padding-left: 3%;
+}
+
+
+input[type=number] {
+    width: 60px;
+    clear: both;
+    box-sizing: border-box;
+	margin: 5px;
+	text-align: center;
+}
+
+#width-adjust{
+	width: 65px;
+}
+
+input[type=radio] {
+	margin: 5px;
+}
+
+#calculate{
+	background-color: #697892;
+	color: white;
+	margin: 5px;
+	border-radius:5px;
+}
+
+#measurements{
+	background: #ededed;
+	padding: 5px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin: auto;
+	border-radius: 10px;
+	width: 275px;
+ 
+}
+
+
+form.userinput{
+	padding: 5px;
+}
+
+form.userinput td{
+	margin: 5px;
+	width: 200px;
+}
+
+container{
+	margin: 20px;
+}
+
+table.bodyFat
+{
+	border-collapse: collapse;
+	border-spacing: 0;
+	max-width: 800px;
+	margin: auto;
+}
+
+table.bodyFat td{
+	height: 20px;
+	padding: 5px;
+}
+
+table.food
+{
+	width: 80%;
+	background-color: #f2f2f2;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin-bottom: 50px;
+	max-width: 800px;
+
+}
+
+table.food th
+{
+	/*padding: 11px;*/
+	background-color: #697892;
+	color: white;
+}
+
+table.food td
+{
+	height: 50px;
+	/*padding: 11px;*/
+	text-align: center
+}
+
+table.food th {
+		text-align: center;
+}
+
+.type{
+	background-color: gray;
+	color: white;
+}
+
+#extras_macro{
+	text-align: left;
+	margin: 0px;
+	padding: 0px;
+}
+
+#macro_title{
+	padding: 10px;
+	color: #b12323;
+}
+
+#macronutrients
+{
+	padding: 0px 5px 5px 5px;
+}
+
+.week{
+	text-align: left;
+}
