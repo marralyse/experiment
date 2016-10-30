@@ -1,10 +1,12 @@
 $(document).ready(function() {
 
-	$('#calculate').click(function(){
+var calorieVars = [];
+  $('#calculate').click(function(){
 
 var macros = ["pro", "carb", "fat"];
 var weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 var week = ["one", "two", "three"];
+
 var differential = [];
 
 	//get the values for body fat percentage
@@ -14,6 +16,8 @@ var differential = [];
 	//var height = feet * 12 + parseInt(inches);
 var calculation;
 var roundedCalculation;
+var calorieCalculation;
+var calorieName;
 	var height = $('#height').val();
 
 	var hip = $('#hip').val();
@@ -71,10 +75,17 @@ var differential = 0;
       differential = calcDifferential(week[i], weekdays[j], macros[k]);
       //console.log("calcdifferential returned " + differential);
       result = anyCalc(LBM, differential);
-      console.log(name);
-      console.log(result);
+      //console.log(name);
+      //console.log(result);
       $(name).html(result + 'g');
+      calorieVars.push(result);
+      console.log(calorieVars);
     }
+    calorieName = "#" + "cal" + weekdays[j] + week[i];
+    console.log(name);
+    calorieCalculation = calcCalories();
+    $(calorieName).html(calorieCalculation + "g");
+    calorieVars = [];
   }
 }
 
@@ -147,9 +158,10 @@ function anyCalc(LBM, measurement){
 	return roundedCalculation;
 }
 
-function calcCalories(protein, carb, fat)
+function calcCalories()
 {
-	calories = (protein * 4) + (carb * 4) + (fat * 9);
+  console.log(calorieVars);
+  calories = (calorieVars[0] * 4) + (calorieVars[1] * 4) + (calorieVars[2] * 9);
 	return calories;
 }
 
