@@ -1,32 +1,26 @@
 $(document).ready(function() {
 
 var calorieVars = [];
-  $('#calculate').click(function(){
 
-var macros = ["pro", "carb", "fat"];
-var weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
-var week = ["one", "two", "three"];
+$('#calculate').click(function(){
 
-var differential = [];
+  var macros = ["pro", "carb", "fat"];
+  var weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+  var week = ["one", "two", "three"];
+  var differential = [];
 
 	//get the values for body fat percentage
 	//var feet = $('#height-feet').val();
 	//var inches = $('#height-inches').val();
 
 	//var height = feet * 12 + parseInt(inches);
-var calculation;
-var roundedCalculation;
-var calorieCalculation;
-var roundedCalories;
-var calorieName;
-	var height = $('#height').val();
-
+  var calculation, roundedCalculation, calorieCalculation, roundedCalories, calorieName;
+  var height = $('#height').val();
 	var hip = $('#hip').val();
 	var waist = $('#waist').val();
 	var neck = $('#neck').val();
-	console.log("height: "+ height);
-
-	var bodyFatPercentage;
+	//console.log("height: "+ height);
+  var bodyFatPercentage;
 
 	//select male or female formula
 	if($('#female').is(':checked')){
@@ -69,30 +63,29 @@ var calorieName;
 	$("#water_intake").html(water +"oz");
 	$("#fiber_intake").html(fiber + "g");
 
-var differential = 0;
+  var differential = 0;
   for (var i = 0; i < week.length; i++){
-  for (var j = 0; j < weekdays.length; j++) {
-    for (var k = 0; k < macros.length; k++) {
-      name = "#" + macros[k] + weekdays[j] + week[i];
+    for (var j = 0; j < weekdays.length; j++) {
+      for (var k = 0; k < macros.length; k++) {
+        name = "#" + macros[k] + weekdays[j] + week[i];
+        console.log(name);
+        //console.log("passing week: " + week[i] + " weekday: " + weekdays[j] + " macro: " + macros[k]);
+        differential = calcDifferential(week[i], weekdays[j], macros[k]);
+        //console.log("calcdifferential returned " + differential);
+        result = anyCalc(LBM, differential);
+        //console.log(name);
+        //console.log(result);
+        $(name).html(result + 'g');
+        calorieVars.push(result);
+        console.log(calorieVars);
+        }
+      calorieName = "#" + "cal" + weekdays[j] + week[i];
       console.log(name);
-      //console.log("passing week: " + week[i] + " weekday: " + weekdays[j] + " macro: " + macros[k]);
-      differential = calcDifferential(week[i], weekdays[j], macros[k]);
-      //console.log("calcdifferential returned " + differential);
-      result = anyCalc(LBM, differential);
-      //console.log(name);
-      //console.log(result);
-      $(name).html(result + 'g');
-      calorieVars.push(result);
-      console.log(calorieVars);
+      calorieCalculation = calcCalories();
+      $(calorieName).html(calorieCalculation + "g");
+      calorieVars = [];
     }
-    calorieName = "#" + "cal" + weekdays[j] + week[i];
-    console.log(name);
-    calorieCalculation = calcCalories();
-    $(calorieName).html(calorieCalculation + "g");
-    calorieVars = [];
   }
-}
-
 });
 
 function calcDifferential(week, weekdays, macros) {
@@ -136,7 +129,6 @@ function calcDifferential(week, weekdays, macros) {
       return .35;
     }
   }
-
 };
 
 //call the function
@@ -169,5 +161,4 @@ function calcCalories()
   roundedCalories = Math.round(calories * 100)/100;
 	return roundedCalories;
 }
-
 });
