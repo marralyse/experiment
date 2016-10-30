@@ -12,7 +12,8 @@ var differential = [];
 	//var inches = $('#height-inches').val();
 
 	//var height = feet * 12 + parseInt(inches);
-
+var calculation;
+var roundedCalculation;
 	var height = $('#height').val();
 
 	var hip = $('#hip').val();
@@ -68,9 +69,11 @@ var differential = 0;
       console.log(name);
       //console.log("passing week: " + week[i] + " weekday: " + weekdays[j] + " macro: " + macros[k]);
       differential = calcDifferential(week[i], weekdays[j], macros[k]);
-      console.log("calcdifferential returned " + differential);
-      //result = anyCalc(LBM, differential);
-      //$('name').html(result + 'g');
+      //console.log("calcdifferential returned " + differential);
+      result = anyCalc(LBM, differential);
+      console.log(name);
+      console.log(result);
+      $(name).html(result + 'g');
     }
   }
 }
@@ -81,7 +84,7 @@ function calcDifferential(week, weekdays, macros) {
   //console.log("The week is " + week + "the weekday is " + weekdays + "the macro is " + macros);
   //return true;
   if (macros == "pro") {
-    console.log ("proteing equal 1.1")
+    //console.log ("proteing equal 1.1")
     return 1.1;
   }
   if (macros == "carb" && week == "one") {
@@ -123,23 +126,25 @@ function calcDifferential(week, weekdays, macros) {
 
 //call the function
 function female(hip, waist, neck, height){
-	console.log("The function was called hip:(" + hip + ") waist: " + waist + " neck: " + neck + " height " + height);
-	console.log((height * 2.54));
+	//console.log("The function was called hip:(" + hip + ") waist: " + waist + " neck: " + neck + " height " + height);
+	//console.log((height * 2.54));
 	bodyFatPercentage = 495/(1.29579 - .35004 * Math.log10(waist * 2.54 + hip * 2.54 - neck * 2.54) + .22100 * Math.log10(height * 2.54)) - 450;
-	console.log("female inside function body fat percentage" + bodyFatPercentage);
+	//console.log("female inside function body fat percentage" + bodyFatPercentage);
 	return bodyFatPercentage;
 };
 
 function male(waist, neck, height) {
-		console.log("The function was called waist: " + "neck: " + neck + "height " + height);
+		//console.log("The function was called waist: " + "neck: " + neck + "height " + height);
 		bodyFatPercentage = 495/(1.0324 - .19077 * Math.log10(waist * 2.54 - neck * 2.54) + .15456 * Math.log10(height * 2.54)) - 450;
-		console.log(bodyFatPercentage);
+		//console.log(bodyFatPercentage);
 		return bodyFatPercentage;
 }
 
 function anyCalc(LBM, measurement){
-	console.log("fatTest: (LBM) " + LBM + " measurement" + measurement);
-	return Math.round(LBM * measurement);
+  calculation = (LBM * measurement);
+  roundedCalculation = Math.round(100 * calculation)/100;
+  //console.log("test: (LBM) " + LBM + " measurement" + measurement + " multiplied and rounded is " + roundedCalculation);
+	return roundedCalculation;
 }
 
 function calcCalories(protein, carb, fat)
